@@ -3,7 +3,7 @@ name: Draw ZMK keymaps
 on:
     push:    # automatically run on changes to following paths
         paths:
-            - "boards/shields/acorn/acorn.keymap"
+            - "draw/corne.keymap"
             - "boards/shields/acorn/acorn.dtsi"
     workflow_dispatch:
 
@@ -14,7 +14,7 @@ jobs:
         permissions:
             contents: write
         with:
-            keymap_patterns: "boards/shields/acorn/corne.keymap"
+            keymap_patterns: "draw/corne.keymap"
             config_path: "keymap_drawer.config.yaml"
             output_folder: "draw"
             parse_args: ""
