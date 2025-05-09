@@ -36,9 +36,12 @@
 #define NAV_BSPC  &mt LC(BSPC) BSPC    // tap: bspc  | long-tap: delete word backward
 #define NAV_DEL   &mt LC(DEL)  DEL     // tap: del   | long-tap: delete word forward
 
+    
 
 / {
-    macros {
+
+
+macros {
         TY: TY {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
@@ -82,18 +85,6 @@ shifq: shifq {
         };
 
 
-    };
-};
-
-/ {
-    combos {
-        compatible = "zmk,combos";
-
-        combo_studio_unlock {
-            timeout-ms = <50>;
-            key-positions = <0 1>;
-            bindings = <&studio_unlock>;
-        };
     };
 
     keymap {
@@ -185,5 +176,7 @@ shifq: shifq {
             display-name = "extra_layer2";
             status = "reserved";
         };
+
     };
+
 };
