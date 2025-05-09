@@ -14,7 +14,7 @@ jobs:
         permissions:
             contents: write
         with:
-            keymap_patterns: "boards/shields/acorn/acorn.keymap"
+            keymap_patterns: "boards/shields/acorn/corne.keymap"
             config_path: "keymap_drawer.config.yaml"
             output_folder: "draw"
             parse_args: ""
