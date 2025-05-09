@@ -27,7 +27,7 @@ layers:
   - ''''
   - LSHFT
   - Z
-  - X
+  - {t: X, h: Bluetooth4}
   - C
   - V
   - B
@@ -199,7 +199,7 @@ layers:
   - {t: ▽, type: trans}
   - ''
   - ''
-  - ''
+  - {type: held}
   - BT CLR
   - {t: BT, h: '2'}
   - {t: BT, h: '3'}
