@@ -1,0 +1,21 @@
+name: Draw ZMK keymaps
+
+on:
+    push:    # automatically run on changes to following paths
+        paths:
+            - "boards/shields/acorn/acorn.keymap"
+            - "boards/shields/acorn/acorn.dtsi"
+    workflow_dispatch:
+
+
+jobs:
+    draw:
+        uses: caksoylar/keymap-drawer/.github/workflows/draw-zmk.yml@main
+        permissions:
+            contents: write
+        with:
+            keymap_patterns: "boards/shields/acorn/acorn.keymap"
+            config_path: "keymap_drawer.config.yaml"
+            output_folder: "draw"
+            parse_args: ""
+            draw_args: ""
