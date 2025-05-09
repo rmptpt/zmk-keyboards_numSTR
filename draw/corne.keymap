@@ -1,0 +1,186 @@
+#include <behaviors.dtsi>
+#include <dt-bindings/zmk/keys.h>
+#include <dt-bindings/zmk/bt.h>
+
+#include <dt-bindings/zmk/ext_power.h>
+#include <dt-bindings/zmk/outputs.h>
+
+
+#include "helperRAK.h"
+
+#define BASE   0
+#define LOWER  1
+#define RAISE  2
+#define NUM    3
+#define BT     4
+
+&lt { quick-tap-ms = <150>; };
+
+// keep it high until you're familiar with keyboard to avoid misclicks
+// later lower it to <= 200
+
+&mt {
+  flavor = "tap-preferred";
+    tapping-term-ms = <300>;
+};
+
+&sl {
+    release-after-ms = <2000>;
+};
+
+
+#define NAV_LEFT  &mt LC(LEFT)   LEFT    // tap: left  | long-tap: beginning of line
+#define NAV_RIGHT &mt LC(RIGHT)  RIGHT   // tap: right | long-tap: end       of line
+#define NAV_UP    &mt LC(HOME) UP      // tap: up    | long-tap: beginning of document
+#define NAV_DOWN  &mt LC(END)  DOWN    // tap: down  | long-tap: end       of document
+#define NAV_BSPC  &mt LC(BSPC) BSPC    // tap: bspc  | long-tap: delete word backward
+#define NAV_DEL   &mt LC(DEL)  DEL     // tap: del   | long-tap: delete word forward
+
+    
+
+/ {
+
+
+macros {
+        TY: TY {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings
+                = <&macro_press &kp LSHFT>
+                , <&macro_tap &kp T>
+                , <&macro_release &kp LSHFT>
+                , <&macro_tap &kp H &kp A &kp N &kp K &kp SPACE &kp Y &kp O &kp U>
+                , <&macro_release &kp LSHFT>
+                ;
+        };
+
+
+ctrlw: ctrlw {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings
+                = <&macro_press &kp LCTRL>
+                , <&macro_tap &kp W>
+                , <&macro_release &kp LCTRL>
+                ;
+        };
+
+ctrlup: ctrlup {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings
+                = <&macro_press &kp LCTRL>
+                , <&macro_tap &kp UP>
+                , <&macro_release &kp LCTRL>
+                ;
+        };
+shifq: shifq {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings
+                = <&macro_press &kp LSHFT>
+                , <&macro_tap &kp QMARK>
+                , <&macro_release &kp LSHFT>
+                ;
+        };
+
+
+    };
+
+
+
+
+
+    keymap {
+        compatible = "zmk,keymap";
+
+        default_layer {
+            display-name = "base";
+            sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp C_VOL_UP C_VOL_DN>;
+// -----------------------------------------------------------------------------------------
+// |  TAB |  Q  |  W  |  E  |  R  |  T  |   |  Y  |  U   |  I  |  O  |  P  | BSPC |
+// | CTRL |  A  |  S  |  D  |  F  |  G  |   |  H  |  J   |  K  |  L  |  ;  |  '   |
+// | SHFT |  Z  |  X  |  C  |  V  |  B  |   |  N  |  M   |  ,  |  .  |  /  | ESC  |
+//                    | GUI | LWR | SPC |   | ENT | RSE  | ALT |
+            bindings = <
+&kp TAB     &kp Q &kp W   &kp E    &kp R     &kp T       &kp Y   &kp U  &kp I     &kp O   &kp P    &sl 5
+&kp LCTRL   &kp A &kp S   &kp D    &kp F     &kp G       &kp H   &kp J  &kp K     &kp L   &kp SEMI &kp SQT
+&kp LSHFT   &kp Z &kp X   &kp C    &kp V     &kp B       &kp N   &kp M  &kp COMMA &kp DOT &kp FSLH &kp ESC
+                          &kp LGUI &kp LALT  &kp SPACE   &kp BSPC &mo 2  &kp LALT
+            >;
+        };
+
+        lower_layer {
+            display-name = "lower";
+// -----------------------------------------------------------------------------------------
+// |  TAB |  1  |  2  |  3  |  4  |  5  |   |  6  |  7  |  8  |  9  |  0  | BSPC |
+// | BTCLR| BT1 | BT2 | BT3 | BT4 | BT5 |   | LFT | DWN |  UP | RGT |     |      |
+// | SHFT |     |     |     |     |     |   |     |     |     |     |     |      |
+//                    | GUI |     | SPC |   | ENT |     | ALT |
+            bindings = <
+&kp TAB    &kp N1       &kp N2       &kp N3        &kp N4       &kp N5         &kp N6   &kp N7   &kp N8  &kp N9    &kp N0 &trans
+&none      &none        &none        &none         &none        &none          &none    &none    &none   &none     &trans &trans
+&trans     &none        &none        &out OUT_BLE  &out OUT_USB &trans         &none    &none    &trans  &trans    &trans &none
+                                     &none         &trans       &none          &none    &none    &none
+            >;
+        };
+
+        raise_layer {
+            display-name = "raise";
+// -----------------------------------------------------------------------------------------
+// |  TAB |  !  |  @  |  #  |  $  |  %  |   |  ^  |  &  |  *  |  (  |  )  | BSPC |
+// | CTRL |     |     |     |     |     |   |  -  |  =  |  [  |  ]  |  \  |  `   |
+// | SHFT |     |     |     |     |     |   |  _  |  +  |  {  |  }  | "|" |  ~   |
+//                    | GUI |     | SPC |   | ENT |     | ALT |
+            bindings = <
+&kp TAB  &kp EXCL &kp AT &kp HASH &kp DLLR &kp PRCNT   &kp CARET &kp AMPS  &kp ASTRK &kp LPAR &kp RPAR &TY
+&trans   &none    &none  &none    &none    &none       &kp MINUS &kp EQUAL &kp LBKT  &kp RBKT &kp BSLH &kp GRAVE
+&trans   &none    &none  &none    &none    &tog NUM    &kp UNDER &kp PLUS  &kp LBRC  &kp RBRC &kp PIPE &kp TILDE
+                         &none    &none    &kp SPACE   &kp RET   &trans    &kp LALT
+            >;
+        };
+
+        num_layer {
+            display-name = "NUMBER3";
+            bindings = <
+&kp TAB  &kp N1    &kp N2    &kp N3   &kp N4    &kp N5            &kp N6     &kp N7     &kp N8     &kp N9    &kp N0      &trans
+&none    &kp EXCL  &kp AT    &kp HASH &kp DLLR  &kp PRCNT         &kp CARET  &kp AMPS   &kp STAR   &kp LPAR  &kp RPAR    &trans
+&none    &none     &none     &none    &none     &tog NUM          &none      &none      &none      &none     &none       &trans
+                             &none    &none     &trans            &trans     &trans     &trans
+            >;
+                };
+
+        BT_layer {
+            display-name = "Bluetooth4";
+            bindings = <
+&none   &none     &kp DEL   &none         &none        &none         &none      &none      &none      &none     &none       &trans
+&none   &none     &none     &none         &bt BT_SEL 0 &bt BT_SEL 1  &none      &none      &none      &none     &none       &trans
+&none   &none     &none     &bt BT_CLR    &bt BT_SEL 2 &bt BT_SEL 3  &none      &none      &none      &none     &none       &trans
+                            &none         &none        &trans        &trans     &trans     &trans
+            >;
+                };
+
+
+        extra_layer0 {
+            display-name = "extra_layer05";
+            bindings = <
+&none   &none     &none     &kp F3   &none     &none         &none      &none      &none      &none     &none       &trans
+&none   &none     &none     &none    &none     &none         &none      &none      &none      &none     &none       &trans
+&none   &none     &none     &none    &none     &none         &none      &none      &none      &none     &none       &trans
+                            &none    &none     &trans        &trans     &trans     &trans
+            >;
+        };
+
+        extra_layer1 {
+            display-name = "extra_layer1";
+            status = "reserved";
+        };
+
+        extra_layer2 {
+            display-name = "extra_layer2";
+            status = "reserved";
+        };
+
+    };
+
+};
