@@ -12,7 +12,7 @@ layers:
   - I
   - O
   - P
-  - {t: extra_layer05, h: sticky}
+  - {t: '55555', h: sticky}
   - LCTRL
   - A
   - S
@@ -38,12 +38,12 @@ layers:
   - /
   - ESC
   - LGUI
-  - LALT
+  - {t: LALT, h: '55555'}
   - SPACE
-  - BSPC
+  - {t: BSPC, h: Ctl+BSPC}
   - raise
   - LALT
-  lower:
+  lower_NOTUSED:
   - TAB
   - '1'
   - '2'
@@ -56,7 +56,7 @@ layers:
   - '9'
   - '0'
   - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
+  - ''
   - ''
   - ''
   - ''
@@ -100,11 +100,11 @@ layers:
   - )
   - '&TY'
   - {t: ▽, type: trans}
-  - ''
-  - ''
-  - ''
-  - ''
-  - ''
+  - '1'
+  - '2'
+  - '3'
+  - '4'
+  - '5'
   - '-'
   - '='
   - '['
@@ -112,18 +112,18 @@ layers:
   - \
   - '`'
   - {t: ▽, type: trans}
-  - ''
-  - ''
-  - ''
-  - ''
-  - {t: NUMBER3, h: toggle}
+  - '6'
+  - '7'
+  - '8'
+  - '9'
+  - '0'
   - _
   - +
   - '{'
   - '}'
   - '|'
   - '~'
-  - ''
+  - {t: NUMBER3, h: toggle}
   - ''
   - SPACE
   - RET
@@ -159,14 +159,14 @@ layers:
   - ''
   - ''
   - ''
-  - {t: NUMBER3, h: toggle}
   - ''
   - ''
   - ''
-  - ''
+  - ','
+  - .
   - ''
   - {t: ▽, type: trans}
-  - ''
+  - {t: NUMBER3, h: toggle}
   - ''
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
@@ -187,7 +187,7 @@ layers:
   - {t: ▽, type: trans}
   - ''
   - ''
-  - ''
+  - F3
   - ''
   - {t: BT, h: '0'}
   - {t: BT, h: '1'}
@@ -215,7 +215,7 @@ layers:
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
-  extra_layer05:
+  '55555':
   - ''
   - ''
   - ''
@@ -227,7 +227,7 @@ layers:
   - ''
   - ''
   - ''
-  - {type: held}
+  - {t: BSPC, type: held}
   - ''
   - ''
   - ''
@@ -254,7 +254,7 @@ layers:
   - {t: ▽, type: trans}
   - ''
   - ''
-  - {t: ▽, type: trans}
+  - RET
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
