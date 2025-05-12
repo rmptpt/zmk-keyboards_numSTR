@@ -106,7 +106,7 @@ shifq: shifq {
 &kp TAB     &kp Q &kp W   &kp E    &kp R     &kp T       &kp Y   &kp U  &kp I     &kp O   &kp P    &sl 5
 &kp LCTRL   &kp A &kp S   &kp D    &kp F     &kp G       &kp H   &kp J  &kp K     &kp L   &kp SEMI &kp SQT
 &kp LSHFT   &kp Z &lt 4 X   &kp C    &kp V     &kp B       &kp N   &kp M  &kp COMMA &kp DOT &kp FSLH &kp ESC
-                          &kp LGUI &kp LALT  &kp SPACE   &kp BSPC &mo 2  &kp LALT
+                          &kp LGUI &kp LALT  &kp SPACE   NAV_BSPC &mo 2  &kp LALT
             >;
         };
 
@@ -164,7 +164,7 @@ shifq: shifq {
         extra_layer0 {
             display-name = "extra_layer05";
             bindings = <
-&none   &none     &none     &kp F3   &none     &none         &none      &none      &none      &none     &none       &trans
+&none   &none     &none     &kp F3   &none     &none         &none      &none      &none      &none     &none       &kp BSPC
 &none   &none     &none     &none    &none     &none         &none      &none      &none      &none     &none       &trans
 &none   &none     &none     &none    &none     &none         &none      &none      &none      &none     &none       &trans
                             &none    &none     &trans        &trans     &trans     &trans
