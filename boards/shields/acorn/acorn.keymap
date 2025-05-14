@@ -65,6 +65,39 @@ ctrlw: ctrlw {
                 ;
         };
 
+ALTAB: ALTAB {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings
+                = <&macro_press &kp LALT>
+                , <&macro_tap &kp TAB>
+                , <&macro_release &kp LALT>
+                ;
+        };
+
+ALTRET: ALTRET {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings
+                = <&macro_press &kp LALT>
+                , <&macro_tap &kp RET>
+                , <&macro_release &kp LALT>
+                ;
+        };
+
+winshft: winshft {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings
+                = <&macro_press &kp LGUI>
+                , <&macro_press &kp LSHFT>
+                , <&macro_tap &kp RIGHT>
+                , <&macro_release &kp LGUI>
+                , <&macro_release &kp LSHFT>
+                ;
+        };
+
+
 ctrlup: ctrlup {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
@@ -133,8 +166,8 @@ shifq: shifq {
 // | SHFT |     |     |     |     |     |   |  _  |  +  |  {  |  }  | "|" |  ~   |
 //                    | GUI |     | SPC |   | ENT |     | ALT |
             bindings = <
-&kp TAB  &kp EXCL &kp AT &kp HASH &kp DLLR &kp PRCNT     &kp CARET &kp AMPS  &kp ASTRK &kp LPAR &kp RPAR &TY
-&trans   &kp N1   &kp N2   &kp N3  &kp N4    &kp N5      &kp MINUS &kp EQUAL &kp LBKT  &kp RBKT &kp BSLH &kp GRAVE
+&kp TAB  &kp N1   &kp N2   &kp N3  &kp N4    &kp N5      &kp CARET &kp AMPS  &kp ASTRK &kp LPAR &kp RPAR &TY
+&trans   &kp EXCL &kp AT &kp HASH &kp DLLR &kp PRCNT     &kp MINUS &kp EQUAL &kp LBKT  &kp RBKT &kp BSLH &kp GRAVE
 &trans   &kp N6   &kp N7   &kp N8  &kp N9    &kp N0      &kp UNDER &kp PLUS  &kp LBRC  &kp RBRC &kp PIPE &kp TILDE
                          &tog NUM  &none     &kp SPACE   &kp RET   &trans    &kp LALT
             >;
@@ -153,8 +186,8 @@ shifq: shifq {
         BT_layer {
             display-name = "Bluetooth4";
             bindings = <
-&none   &none     &kp DEL   &none         &none        &none         &none      &none      &none      &none     &none       &trans
-&none   &none     &kp F3    &none         &bt BT_SEL 0 &bt BT_SEL 1  &none      &none      &none      &none     &none       &trans
+&none   &winshft  &kp DEL   &none         &none        &none         &none      &none      &none      &none     &none       &trans
+&none   &kp F3    &none     &none         &bt BT_SEL 0 &bt BT_SEL 1  &none      &none      &none      &none     &none       &trans
 &none   &none     &none     &bt BT_CLR    &bt BT_SEL 2 &bt BT_SEL 3  &none      &none      &none      &none     &none       &trans
                             &none         &none        &trans        &trans     &trans     &trans
             >;
@@ -164,10 +197,10 @@ shifq: shifq {
         extra_layer0 {
             display-name = "55555";
             bindings = <
-&none   &none     &none     &kp F3   &none     &none         &none      &none      &none      &none     &none       &kp BSPC
+&ALTAB  &none     &none     &none    &none     &none         &none      &none      &none      &none     &none       &kp HOME
 &none   &none     &none     &none    &none     &none         &none      &none      &none      &none     &none       &trans
 &none   &none     &none     &none    &none     &none         &none      &none      &none      &none     &none       &trans
-                            &none    &none     &kp RET       &trans     &trans     &trans
+                            &none    &none     &kp RET       &ALTRET    &none      &none
             >;
         };
 
